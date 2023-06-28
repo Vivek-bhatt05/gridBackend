@@ -18,9 +18,9 @@ userRouter.get("/",async(req,res)=>{
 
 
 userRouter.post("/",async(req,res)=>{
-    const {name,email,phone}=req.body
+    const {name,email,phone,date}=req.body
     try{
-                const user= new UserModel({name,email,phone})
+                const user= new UserModel({name,email,phone,date})
                 await user.save()
                 res.send("Registered user")
             

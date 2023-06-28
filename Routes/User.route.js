@@ -8,9 +8,8 @@ const userRouter=express.Router()
 
 userRouter.get("/",async(req,res)=>{
     try{
-    //    const users= await UserModel.find()
-    //    res.send(users)
-       res.send("Hdd")
+       const users= await UserModel.find()
+       res.send(users)
     }catch(err){
        console.log(err)
        res.send("Something Went Wrong")
@@ -31,6 +30,20 @@ userRouter.post("/",async(req,res)=>{
         console.log(err)
     }
 }) 
+
+userRouter.patch("/:id",async(req,res)=>{
+    const ID=req.params.id
+    const payload= req.body
+
+    try{
+      await UserModel.findByIdAndUpdate({_id:ID},payload)
+      res.send("Updated")
+    }
+    catch(err){
+        console.log(err)
+        res.send("Something Went Wrong")
+    }
+})
 
 
 

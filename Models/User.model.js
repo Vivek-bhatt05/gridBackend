@@ -4,7 +4,7 @@ const userSchema=mongoose.Schema({
     name: String,
     email: String,
     phone: String,
-    date: String
+    date: Object
 })
 
 const UserModel = mongoose.model("user",userSchema);
